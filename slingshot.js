@@ -4,7 +4,7 @@ class SlingShot{
             bodyA: bodyA,
             pointB: pointB,
             stiffness: 0.04,
-            length: 10
+            length: 1
         }
         
         this.pointB = pointB
@@ -25,11 +25,9 @@ class SlingShot{
 
             if(pointA.x < 200){
                 line(pointA.x-20, pointA.y, pointB.x-20, pointB.y);
-                line(pointA.x-20, pointA.y, pointB.x+25, pointB.y-4);
             }
             else{
                 line(pointA.x-25, pointA.y, pointB.x-20, pointB.y);
-                line(pointA.x-25, pointA.y, pointB.x+25, pointB.y-4);
             }
              
             
