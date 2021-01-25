@@ -4,85 +4,83 @@ const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
 var engine, world;
+var polygon , slingshot;
 var ground , platform1 , platform2;
 
-function preload(){
-    polygonImage = loadImage("polygon.png")
-}
 function setup(){
     var canvas = createCanvas(2000,1000);
 
     engine = Engine.create();
     world = engine.world;
-
-    polygon = Bodies.circle(200,600,30);
-    World.add(world,polygon)
     
- 
-    ground = new Ground(1000,970,2000,20);
-    platform1 = new Ground(800,800,400,20);
-    platform2 = new Ground(1300,500,300,20);
+    ground = new Ground(1000,800,2000,20);
+    platform1 = new Ground(695,700,400,20);
+    platform2 = new Ground(1090,500,300,20);
 
-    
-    slingshot = new SlingShot(this.polygon,{x:200,y:600});
-
+    polygon = new Polygon(200,600,60);
+    slingshot = new SlingShot(polygon.body,{x:200,y:600});
 
     //Platform1
-    //4th layer
-    fill("blue")
-    box1 = new Box(710,780); 
-    box2 = new Box(740,780);
-    box3 = new Box(770,780);
-    box4 = new Box(800,780);
-    box5 = new Box(830,780,);
-    box6 = new Box(860,780);
-    box7 = new Box(890,780);
-
     //3rd layer
-    fill("pink")
-    box8 = new Box(740,740);
-    box9 = new Box(770,740);
-    box10 = new Box(800,740);
-    box11 = new Box(830,740);
-    box12 = new Box(860,740);
 
-    //2nd layer
-    fill("green");
-    box13 = new Box(770,700,);
-    box14 = new Box(800,700);
-    box15 = new Box(830,700);
+    box1 = new Box(530,657,50,60); 
+    box2 = new Box(585,657,50,60);
+    box3 = new Box(640,657,50,60);
+    box4 = new Box(695,657,50,60);
+    box5 = new Box(750,657,50,60);
+    box6 = new Box(805,657,50,60);
+    box7 = new Box(860,657,50,60);
+     //2nd layer
 
+    box8 = new Box(555,595,50,60);
+    box9 = new Box(610,595,50,60);
+    box10 = new Box(665,595,50,60);
+    box11 = new Box(720,595,50,60);
+    box12 = new Box(775,595,50,60);
+    box13 = new Box(830,595,50,60);
     //1st layer
-    fill("yellow")
-    box16 = new Box(800,660);
+
+    box14 = new Box(580,530,50,60);
+    box15 = new Box(635,530,50,60);
+    box16 = new Box(690,530,50,60);
+    box17 = new Box(745,530,50,60);
+    box18 = new Box(800,530,50,60);
 
     //Platform2
+     //5th layer
+     Box1 = new Box(980,457,50,60);
+     Box2 = new Box(1035,457,50,60);
+     Box3 = new Box(1090,457,50,60);
+     Box4 = new Box(1145,457,50,60);
+     Box5 = new Box(1200,457,50,60);
+     //4th layer
+     Box6 = new Box(1005,395,50,60);
+     Box7 = new Box(1060,395,50,60);
+     Box8 = new Box(1115,395,50,60);
+     Box9 = new Box(1170,395,50,60);
      //3rd layer
-     fill("pink")
-     box17 = new Box(1180,460);
-     box18 = new Box(1240,460);
-     box19 = new Box(1300,460);
-     box20 = new Box(1360,460);
-     box21 = new Box(1420,460);
+    
+     Box10 = new Box(1030,332,50,60);
+     Box11 = new Box(1085,332,50,60);
+     Box12 = new Box(1140,332,50,60);
 
      //2nd layer
-     fill("green")
-     box22 = new Box(1240,420);
-     box23 = new Box(1300,420);
-     box24 = new Box(1360,420);
+     Box13 = new Box(1060,270,50,60);
+     Box14 = new Box(1115,270,50,60);
 
      //1st layer
-     fill("yellow")
-     box25 = new Box(1300,380);
+     Box15 = new Box(1085,210,50,60)
+
 }
 
 function draw(){
-    background(0);
+    background("skyBlue");
 
     Engine.update(engine);
 
-    imageMode(CENTER);
-    image(polygonImage,polygon.position.x,polygon.position.y,30,30)
+    textSize(20);
+    fill("black");
+    text("Drag the Hexagonal Stone and Release it, to launch it towards the blocks",100,50);
 
     ground.display();
     platform1.display();
@@ -100,33 +98,47 @@ function draw(){
     box5.display();
     box6.display();
     box7.display();
+    
     box8.display();
     box9.display();
     box10.display();
-
     box11.display();
     box12.display();
     box13.display();
+
     box14.display();
     box15.display();
     box16.display();
     box17.display();
     box18.display();
-    box19.display();
-    box20.display();
 
-    box21.display();
-    box22.display();
-    box23.display();
-    box24.display();
-    box25.display();
+    Box1.display();
+    Box2.display();
+    Box3.display();
+    Box4.display();
+    Box5.display();
+
+    Box6.display();
+    Box7.display();
+    Box8.display();
+    Box9.display();
+
+    Box10.display();
+    Box11.display();
+    Box12.display();
+
+    Box13.display();
+    Box14.display();
+    Box15.display();
+    
 }
 
 function mouseDragged(){
     Matter.Body.setPosition(this.polygon, {x: mouseX , y: mouseY});
  }
  
- 
  function mouseReleased(){
      slingshot.fly();
  }
+
+ 
