@@ -22,15 +22,7 @@ class SlingShot{
             var pointB = this.pointB;
             strokeWeight(4);
             stroke(48,22,8);
-
-            if(pointA.x < 200){
-                line(pointA.x-20, pointA.y, pointB.x-20, pointB.y);
-            }
-            else{
-                line(pointA.x-25, pointA.y, pointB.x-20, pointB.y);
-            }
-             
-            
+            line(pointA.x, pointA.y, pointB.x, pointB.y);
         }
     }
 
